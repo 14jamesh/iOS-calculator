@@ -1,6 +1,6 @@
 # iOS-calculator
 
-An iOS 13 calculator that I made for learning DOM interactions. 
+An iOS 13 calculator that I made for learning DOM interactions. Did the HTML, CSS and obvs the JS.
 
 - Decided to use the iOS13 calculator for my design.
  
@@ -10,7 +10,6 @@ An iOS 13 calculator that I made for learning DOM interactions.
 
 Possible future updates: Strip Math.round/floor and use floating point numbers.  
 
-I'm pretty happy with how css turned out :)
 
 
 
