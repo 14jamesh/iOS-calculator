@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+
+/* HEADER STYLING */ 
+
+html{
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+
+.hero-section{
+    font-family: 'Helvetica';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+
+}
+
+.brand{
+    font-size: 45px;
+    font-weight: lighter;
+    margin-bottom: 0px;
+}
+
