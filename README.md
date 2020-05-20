@@ -10,6 +10,7 @@ An iOS 13 calculator that I made for learning DOM interactions.
 
 Possible future updates: Strip Math.round/floor and use floating point numbers.  
 
+I'm pretty happy with how css turned out :)
 
 
 
