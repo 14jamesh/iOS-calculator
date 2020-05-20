@@ -12,7 +12,7 @@ Possible future updates: Strip Math.round/floor and use floating point numbers.
    
 Lessons learnt: 
  > Event bubbling is useful.
- > Don't take GUI calculators for granted.
+ > Don't take GUI calculators for granted lol.
  
 
 
