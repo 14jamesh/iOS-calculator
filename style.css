@@ -8,7 +8,6 @@ html{
     font-family: 'Helvetica';
     font-size: 18px;
     font-weight: lighter;
-    color: white;
 }
 
 
@@ -50,6 +49,7 @@ html{
     font-weight: lighter;
     
     display: flex;
+    color: #fff;
 
     justify-content: flex-end;
     align-items: flex-end;
@@ -65,15 +65,6 @@ html{
 .row{
     display: flex;
     justify-content: space-between;
-}
-
-
-
-/* STYLING INDIVIDUAL ROWS */
-
-.buttons-row-5 .btn-number{
-    width: 220px;
-    border-radius: 50px;
 }
 
 
@@ -94,20 +85,59 @@ html{
     justify-content: center;
 }
 
+
+
+/* STYLING INDIVIDUAL ROWS */
+
+.buttons-row-5 .btn-number{
+    width: 220px;
+    border-radius: 50px;
+}
+
 .AC{
     width: 140px;
     border-radius: 50px;
 }
+
+/* BUTTON SPECIAL */
 
 .btn-special{
     color: #000;
     background-color: #d4d4d2;
 }
 
+.btn-special:hover{
+    background-color: #f3f3f1;
+}
+
+.btn-special:active{
+    background-color: #d4d4d293;
+}
+
+/* BUTTON OPERATIONS */
+
 .btn-operations{
     background-color: #ff9500;
 }
 
+.btn-operations:hover{
+    background-color: #f1b259;
+}
+
+.btn-operations:active{
+    background-color: #d48312;
+}
+
+/* BUTTON SPECIAL */
+
 .btn-number{
     background-color: #505050; 
+}
+
+.btn-number:hover{
+    background-color: #808080;       
+}
+
+.btn-number:active{
+    background-color: #3f3e3e; 
 }
