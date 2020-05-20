@@ -10,9 +10,9 @@ An iOS 13 calculator that I made for learning DOM interactions. Did the HTML, CS
 Possible future updates: Strip Math.round/floor and use floating point numbers. Introduce [+/-], [ . ] and [ % ] functionalities.  
    
 Lessons learnt: 
-  -  Event bubbling is useful.
-  -  Piece-meal approach. 
-  -  Don't take GUI calculators for granted lol.
+  > Event bubbling is useful.
+  > Piece-meal approach. 
+  > Don't take GUI calculators for granted lol.
  
 
 
