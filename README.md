@@ -1,6 +1,6 @@
 # iOS-calculator
 
-A iOS 13 calculator that I made for learning DOM interactions. 
+An iOS 13 calculator that I made for learning DOM interactions. 
 
 - Decided to use the iOS13 calculator for my design.
  
