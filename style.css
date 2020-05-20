@@ -8,6 +8,7 @@ html{
     font-family: 'Helvetica';
     font-size: 18px;
     font-weight: lighter;
+    color: white;
 }
 
 
@@ -49,7 +50,6 @@ html{
     font-weight: lighter;
     
     display: flex;
-    color: white;
 
     justify-content: flex-end;
     align-items: flex-end;
@@ -92,6 +92,11 @@ html{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.AC{
+    width: 140px;
+    border-radius: 50px;
 }
 
 .btn-special{
