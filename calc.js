@@ -17,7 +17,7 @@ document.querySelector('.calc-body').addEventListener('click', (e) =>{
             break;
 
         case e.target.className.includes('operations'): //if an operation is clicked
-            if(current != ""){
+            if(current != ""){ //this is to ensure the user has inputted a new number prior to clicking on operation again, otherwise calcCurrent will try to perform arithmetic with an empty string = NaN
                 calcCurrent();
                 resetCurrent();
                 if(total % 1 != 0){
@@ -54,8 +54,8 @@ function setPrevOperator(input){
 }
 
 function calcCurrent(){
-    if(total.length === 0){
-        total = parseInt(current);
+    if(total.length === 0){//if it is the first input into the calculator 
+        total = parseInt(current); //set total equal to the value just inputted 
     }else{
 
         current = Math.floor(parseInt(current));
