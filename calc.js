@@ -1,32 +1,33 @@
-let current = ""; //current numbers displayed on screen [55]
-let operator = "";  //operator clicked by user [plus]
-let total = 0; //total as user continues performing calculations 
+let current; //current numbers displayed on screen [55]
+let operator;  //operator clicked by user [plus]
+let total; //total as user continues performing calculations 
 displayBox = document.querySelector('.calc-text-area'); //the display area for the user input and result 
 
 document.querySelector('.calc-body').addEventListener('click', (event) => {
     switch(true){ //check what button the user clicked 
-        case event.target.className.includes('AC'): //if clear button 
+        case event.target.className.includes('AC'): //in the case of the clear button 
             reset(); 
             break; 
-        case event.target.className.includes('operations'): //if an operations button (orange-right side column)
-            if(event.target.innerText === '='){
+        case event.target.className.includes('operations'): //in the case of an operations button 
+            if(event.target.innerText === '='){ //if the operations button is the equal sign 
                 calcCurrent(); 
-                displayBox.innerText = total;
+                displayBox.innerText = Math.floor(total);
             }else{
-                setOperator(event.target.innerText);
-                calcCurrent();
-                clearCurrent();
-                displayBox.innerText = total;
-                //setBuffer(); //this is right it should be done last 
+                if(current != ""){
+                    setOperator(event.target.innerText); //else it is an arithmetic operation 
+                    calcCurrent();
+                    clearCurrent();
+                    displayBox.innerText = Math.floor(total);
+                }
             }
             break;
-        case event.target.className.includes('number'): //if a number button
+        case event.target.className.includes('number'): //in the case that it is a number being clicked  
             setCurrent(event.target.innerText);
             break;
     }
 });
 
-function setCurrent(input){ //current display on calculator and set variable current
+function setCurrent(input){//current display on calculator and set variable current
     current += input;
     displayBox.innerText = current;
 }
@@ -54,9 +55,9 @@ function clearCurrent(){
 
 
 function calcCurrent(){
-    if(total === 0){//if it is the first time clicking an operation, so buffer hasn't been set before  
-        total = parseInt(current);//empty the current input into the total 
-    }else{ //else we can perform arithmetic because buffer variable is holding a valid number 
+    if(total.length === 0){//if it is the first time clicking an operation, so total hasn't been set before  
+        total = parseInt(current);//empty the current input into the total ***** AND sets it to a number from typeof(string) on init  ******
+    }else{ //else we can perform arithmetic because total variable is now holding a valid integer of type number 
         switch(operator){
             case 'divide':
                 total /= parseInt(current);
@@ -74,12 +75,11 @@ function calcCurrent(){
     }
 }
 
-
 function reset(){ 
     displayBox.innerText = 0;
     buffer = "";
     current = "";
-    total = 0;
+    total = "";
 }
 
 function init(){ //on launch clear fields 
