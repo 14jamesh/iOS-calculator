@@ -14,11 +14,11 @@ document.querySelector('.calc-body').addEventListener('click', (e) =>{
             setCurrent(e.target.innerText); //just update the current variable
             displayBox.innerText = current; //display the current variable 
             break;
-            
+
         case e.target.className.includes('operations'): //if an operation is clicked
             if(current != "" || prevOperator == ""){ 
             // 1. if (current != "") -->  this is to ensure the user has inputted a new number prior to clicking on operation again, otherwise calcCurrent will try to perform arithmetic with an empty string = NaN     
-            //2. OR prevOperator == "" --> if the user clicks on equal sign the prevOperator variable and current variable resets to an empty string (line 22 and 23), but I still need them to come in here on the *NEXT* operational click, so their next operator can be set on line 29. 
+            //2. OR prevOperator == "" --> if the user clicks on equal sign the prevOperator variable and current variable resets to an empty string (line 23 and 24), but I still need them to come in here on the *NEXT* operational click, so their next operator can be set on line 30. 
             //Line 19 is a bit confusing but I can't think of a better implementation right now. It works so meh. 
                 calcCurrent();
                 resetCurrent();
