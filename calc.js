@@ -1,6 +1,5 @@
-let buffer = ""; 
-let current = ""; //current numbers displayed on screen
-let operator = "";  //operator clicked by user
+let current = ""; //current numbers displayed on screen [55]
+let operator = "";  //operator clicked by user [plus]
 let total = 0; //total as user continues performing calculations 
 displayBox = document.querySelector('.calc-text-area'); //the display area for the user input and result 
 
@@ -10,12 +9,15 @@ document.querySelector('.calc-body').addEventListener('click', (event) => {
             reset(); 
             break; 
         case event.target.className.includes('operations'): //if an operations button (orange-right side column)
-            if(event.target.innerText === '='){ //not sure about this right now
+            if(event.target.innerText === '='){
+                calcCurrent(); 
                 displayBox.innerText = total;
             }else{
-                calcCurrent(parseFloat(event.target.innerText));
                 setOperator(event.target.innerText);
-                setBuffer(); //this is right it should be done last 
+                calcCurrent();
+                clearCurrent();
+                displayBox.innerText = total;
+                //setBuffer(); //this is right it should be done last 
             }
             break;
         case event.target.className.includes('number'): //if a number button
@@ -24,7 +26,7 @@ document.querySelector('.calc-body').addEventListener('click', (event) => {
     }
 });
 
-function setCurrent(input){ //current display on calculator
+function setCurrent(input){ //current display on calculator and set variable current
     current += input;
     displayBox.innerText = current;
 }
@@ -46,27 +48,32 @@ function setOperator(input){ //set the operator the user clicks on
     }
 }
 
-function setBuffer(){
-    buffer = current;
+function clearCurrent(){
     current = "";
 }
 
-function calcCurrent(input){
-    if(buffer == ""){ //if it is the first time clicking an operation, so buffer hasn't been set before  
-        total = input; //empty the current input into the total 
+
+function calcCurrent(){
+    if(total === 0){//if it is the first time clicking an operation, so buffer hasn't been set before  
+        total = parseInt(current);//empty the current input into the total 
     }else{ //else we can perform arithmetic because buffer variable is holding a valid number 
         switch(operator){
             case 'divide':
+                total /= parseInt(current);
                 break;
             case 'multiply':
+                total *= parseInt(current);
                 break;
             case 'minus':
+                total -= parseInt(current); 
                 break;
             case 'plus':
+                total += parseInt(current);
                 break;
         }
     }
 }
+
 
 function reset(){ 
     displayBox.innerText = 0;
