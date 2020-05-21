@@ -1,13 +1,28 @@
 let total = ""; 
 let current = ""; 
-let prevOperator = ""; 
+let prevOperator = " "; //variable will either hold a plus, minus, multiply, divide or empty string. It inits as a space to pass a fringe case on line 10. 
 let displayBox = document.querySelector('.calc-text-area');
-document.querySelector('.calc-body').addEventListener('click', (e) =>{
 
+document.querySelector('.calc-body').addEventListener('click', (e) =>{
+    
     switch(true){
-        case e.target.className.includes('AC'): //if AC is clicked 
+
+        case e.target.className.includes('clr') && (prevOperator != ""): //if user clicks character clear (<-- on calculator) and hasn't clicked on yet = (no character clear allowed after = is clicked) [User can reset this by clicking on (C)]
+            if(current.length === 1 ){ //if there is only one character as an input, clear it to 0 because that is the last char being deleted. 
+                current = "0"; 
+                displayBox.innerText = current;
+            }else if(total != "" && current == ""){
+                //do nothing
+                //if current has been reset it becomes an empty string ("") --> this means the user is in the middle of performing operations. (See line 38 and 39) To prevent an accidental click on clear this case is here to do nothing. 
+            }else{ //else if it is a string of digits delete them one by one with each click.  
+                current = current.slice(0, current.length -1);
+                displayBox.innerText = current;
+            }
+            break;
+
+        case e.target.className.includes('AC'): //if Clear is clicked 
             reset(); //reset all variables and what is displayed
-            displayBox.innerText = 0; 
+            displayBox.innerText = "0"; 
             break;
 
         case e.target.className.includes('number'): //if a number is clicked
@@ -18,8 +33,7 @@ document.querySelector('.calc-body').addEventListener('click', (e) =>{
         case e.target.className.includes('operations'): //if an operation is clicked
             if(current != "" || prevOperator == ""){ 
             // 1. if (current != "") -->  this is to ensure the user has inputted a new number prior to clicking on operation again, otherwise calcCurrent will try to perform arithmetic with an empty string = NaN     
-            //2. OR prevOperator == "" --> if the user clicks on equal sign the prevOperator variable and current variable resets to an empty string (line 23 and 24), but I still need them to come in here on the *NEXT* operational click, so their next operator can be set on line 30. 
-            //Line 19 is a bit confusing but I can't think of a better implementation right now. It works so meh. 
+            //2. OR prevOperator == "" --> if the user clicks on equal sign the prevOperator variable and current variable resets to an empty string (line 38 and 39), but I still need them to come in here on the *NEXT* operational click, so their next operator can be set on line 45. 
                 calcCurrent();
                 resetCurrent();
                 if(total % 1 != 0){
@@ -62,8 +76,6 @@ function calcCurrent(){
 
         switch(prevOperator){
             case 'divide':
-                console.log(total);
-                console.log(current);
                 total /= current;
                 break;
             case 'multiply':
@@ -84,5 +96,5 @@ function resetCurrent(){
 function reset(){
     total = "";
     current = "";
-    previousOperator = "";
+    previousOperator = " ";
 }
