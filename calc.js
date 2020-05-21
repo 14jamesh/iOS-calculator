@@ -1,24 +1,30 @@
-let total = ""; //5
-let current = ""; //"2"
-let prevOperator = ""; //
+let total = ""; 
+let current = ""; 
+let prevOperator = ""; 
 let displayBox = document.querySelector('.calc-text-area');
 
 document.querySelector('.calc-body').addEventListener('click', (e) =>{
 
     switch(true){
-        case e.target.className.includes('AC'): //resets the calculator
+        case e.target.className.includes('AC'): //if AC is clicked 
             reset();
             displayBox.innerText = 0;
             break;
-        case e.target.className.includes('number'): //updates current as user clicks
+
+        case e.target.className.includes('number'): //if a number is clicked
             setCurrent(e.target.innerText);
             displayBox.innerText = current;
             break;
-        case e.target.className.includes('operations'):
+
+        case e.target.className.includes('operations'): //if an operation is clicked
             if(current != ""){
                 calcCurrent();
                 resetCurrent();
-                displayBox.innerText = total;
+                if(total % 1 != 0){
+                    displayBox.innerText = total.toFixed(2);
+                }else{
+                    displayBox.innerText = total;
+                }
                 setPrevOperator(e.target.innerText);
                 break;
             }      
@@ -46,10 +52,6 @@ function setPrevOperator(input){
             break;
     }
 }
-
-// 10 * 7 + 2 / 4 (pass);
-
-// 8 / * - + 2 = 4;
 
 function calcCurrent(){
     if(total.length === 0){
@@ -84,6 +86,3 @@ function reset(){
     current = "";
     previousOperator = "";
 }
-
-//1. current --> total 
-//2. 
