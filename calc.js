@@ -13,7 +13,7 @@ document.querySelector('.calc-body').addEventListener('click', (e) =>{
                 current = "0"; 
                 displayBox.innerText = current;
             }else if(total != "" && current == ""){
-                //if current has been reset it becomes an empty string ("") --> this means the user is in the middle of performing operations about to input a new value (See line 38 and 39) To prevent an accidental click on clear this case is here to do nothing. 
+               //if user is in middle of performing an operation, do nothing to prevent an accidental clearing.  
             }else{ //else if it is a string of digits delete them one by one with each click.  
                 current = current.slice(0, current.length -1);
                 displayBox.innerText = current;
@@ -32,7 +32,6 @@ document.querySelector('.calc-body').addEventListener('click', (e) =>{
 
         case e.target.className.includes('operations'): //if an operation is clicked
             if(current !== "" || clickedEqual == true){ 
-            console.log(total);
             // 1. if (current != "") -->  this is to ensure the user has inputted a new number prior to clicking on operation again, otherwise calcCurrent will try to perform arithmetic with an empty string = NaN     
             //2. OR clickedEqual == true --> if the user clicks on equal sign the current variable resets to an empty string (line 39), but I still need them to come in here on the *NEXT* operational click, so their next operator can be set on line 45. 
                 calcCurrent();
@@ -98,5 +97,6 @@ function resetCurrent(){
 function reset(){
     total = "";
     current = "";
-    previousOperator = false;
+    previousOperator = "";
+    clickedEqual = false;
 }
