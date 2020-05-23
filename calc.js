@@ -1,6 +1,6 @@
 let total = ""; 
 let current = ""; 
-let prevOperator = ""; //variable will either hold a plus, minus, multiply, divide or empty string. It inits as a space to pass a fringe case on line 11. 
+let prevOperator = ""; 
 let clickedEqual = false;
 let displayBox = document.querySelector('.calc-text-area');
 
